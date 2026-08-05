@@ -1,0 +1,31 @@
+{
+  "name": "codeninja",
+  "private": true,
+  "version": "1.0.0",
+  "description": "CodeNinja — a full-stack learning platform for the 30-day Full-Stack Developer track",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -n api,web -c cyan,magenta \"npm run dev -w @codeninja/api\" \"npm run dev -w @codeninja/web\"",
+    "build": "npm run build -w @codeninja/content && npm run build -w @codeninja/api && npm run build -w @codeninja/web",
+    "db:up": "docker compose up -d postgres redis",
+    "db:migrate": "npm run generate -w @codeninja/api && npm run migrate -w @codeninja/api",
+    "db:seed": "npm run build -w @codeninja/content && npm run seed -w @codeninja/api",
+    "db:reset": "npm run reset -w @codeninja/api",
+    "setup": "npm install && npm run db:migrate && npm run db:seed",
+    "content:validate": "npm run validate -w @codeninja/content",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "plan": "node scripts/build-plan.mjs > study-plan.html"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "playwright": "^1.62.1",
+    "typescript": "^5.7.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
