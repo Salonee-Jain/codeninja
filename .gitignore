@@ -11,3 +11,4 @@ coverage/
 
 study-plan.html
 *.md
+!README.md
