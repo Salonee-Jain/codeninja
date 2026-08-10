@@ -11,7 +11,6 @@ IDE, server-graded quizzes, spaced-repetition flashcards and milestone projects.
 
 React and **Next.js** on the front, Node/Express, **NestJS** and **tRPC** on the back, real
 databases underneath, Docker/Kubernetes/CI to ship it. Python and Go get one deliberate day.
-Java, Spring Boot, C++, PHP/Laravel and Angular are intentionally out of scope.
 
 ---
 
