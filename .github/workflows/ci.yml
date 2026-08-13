@@ -63,7 +63,7 @@ jobs:
       - name: Browser smoke test
         run: |
           npx playwright install --with-deps chromium
-          npx next start -p 3000 --dir apps/web &
+          npm run start -w @codeninja/web &
           npx wait-on http://localhost:3000 -t 60000
           node scripts/ui-smoke.mjs
 
