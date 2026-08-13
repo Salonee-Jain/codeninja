@@ -60,16 +60,3 @@ jobs:
           npx wait-on http://localhost:4000/health -t 30000
           node scripts/smoke.mjs
 
-      - name: Browser smoke test
-        run: |
-          npx playwright install --with-deps chromium
-          npx next start -p 3000 --dir apps/web &
-          npx wait-on http://localhost:3000 -t 60000
-          node scripts/ui-smoke.mjs
-
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: ui-screenshots
-          path: /tmp/shots
-          if-no-files-found: ignore

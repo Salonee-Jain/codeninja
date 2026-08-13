@@ -22,7 +22,9 @@ const check = (name, ok, detail) => {
   }
 };
 
-const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH ?? '/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
+const browser = await chromium.launch(
+  process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH } : {},
+);
 const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
 
 const consoleErrors = [];

@@ -97,7 +97,7 @@ learnRouter.post(
     });
     if (!questions.length) throw notFound('No quiz for this day');
 
-    const byId = new Map(questions.map((q) => [q.id, q]));
+    const byId = new Map(questions.map((q: (typeof questions)[number]) => [q.id, q]));
     let score = 0;
     const graded = answers
       .filter((a) => byId.has(a.questionId))
