@@ -9,6 +9,7 @@ import { env, isProd } from './env';
 import { authRouter } from './routes/auth';
 import { trackRouter } from './routes/track';
 import { learnRouter } from './routes/learn';
+import { tutorRouter } from './routes/tutor';
 import { errorHandler, notFound } from './middleware';
 
 export function createApp() {
@@ -41,6 +42,7 @@ export function createApp() {
   app.use('/api/auth', authRouter);
   app.use('/api/tracks', trackRouter);
   app.use('/api/learn', learnRouter);
+  app.use('/api/tutor', tutorRouter);
 
   app.use((_req, _res, next) => next(notFound('No such endpoint')));
   app.use(errorHandler);
